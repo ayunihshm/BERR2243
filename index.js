@@ -6,6 +6,7 @@ async function main() {
     const client = new MongoClient(uri);
 
     try {
+        await client.connect()
         console.log("Connected to MongoDB!");
 
         const db = client.db("testDB");
