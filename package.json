@@ -19,5 +19,6 @@
   "homepage": "https://github.com/ayunihshm/BERR2243#readme",
   "dependencies": {
     "mongodb": "^6.15.0"
-  }
+  },
+  "devDependencies": {}
 }
