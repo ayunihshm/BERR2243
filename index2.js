@@ -29,17 +29,17 @@ async function main(){
 
         drivers.forEach(async (driver)=> {
             const result = await driversCollection.insertOne(driver);
-            console.log(`New driver created with result: ${result}`);
+            console.log(`New driver created with result: ${result.insertedId}`);
         });
 
-        const updateResult = await db.collection('drivers').updateOne(
+        const updateResult = await db.collection('drivers').updateMany(
             { name: "Jannah" },
             { $inc: { rating: 0.1 } }
         );
-        console.log(`Driver updated with result: ${updateResult}`);
+        console.log(`Driver updated with result: ${updateResult.modifiedCount}`);
 
-        const deleteResult = await db.collection('drivers').deleteOne({ isAvailable: true })
-        console.log(`Driver deleted with result: ${deleteResult}`);
+        const deleteResult = await db.collection('drivers').deleteMany({ isAvailable: true })
+        console.log(`Driver deleted with result: ${deleteResult.deletedCount}`);
 
     } finally {
         await client.close();
