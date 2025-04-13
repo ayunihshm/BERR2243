@@ -23,19 +23,14 @@ async function main(){
 
     try{
         await client.connect();
-        console.log("Connected to MongoDB!");
-
         const db= client.db("testDB");
-        const collection = db.collection("users");
 
-        await collection.insertOne({ name: "jannah", age: 21});
-        console.log("Document inserted!");
+        const driversCollection = db.collection("drivers");
 
-        const result = await collection.findOne({ name: "jannah"})
-        console.log("Query result:", result);
-    
-    }catch(err){
-        console.error("Error:", err);
+        drivers.forEach(async (driver)=> {
+            const result = await driversCollection.insertOne(driver);
+            console.log('New driver created with result: ${result}')
+        });
     }finally{
         await client.close();
     }
