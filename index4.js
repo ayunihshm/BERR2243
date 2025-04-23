@@ -51,7 +51,7 @@ app.post('/auth/login', async (req, res) => {
 });
 
 //change password
-app.put('/auth/change-password', async (req, res) => {
+app.patch('/auth/change-password', async (req, res) => {
   try {
     const result = await db.collection('users').updateOne(
       { _id: new ObjectId(req.body.userId), password: req.body.oldPassword },
@@ -80,7 +80,7 @@ app.get('/users/:userId', async (req, res) => {
 });
 
 //updated profile
-app.put('/users/:userId', async (req, res) => {
+app.patch('/users/:userId', async (req, res) => {
   try {
     const result = await db.collection('users').updateOne(
       { _id: new ObjectId(req.params.userId) },
@@ -245,7 +245,7 @@ app.post('/recipes/:recipeId/ratings', async (req, res) => {
 });
 
 // Admin - Approve or Reject
-app.put('/admin/recipes/:id/status', async (req, res) => {
+app.patch('/admin/recipes/:id/status', async (req, res) => {
   try {
     const result = await db.collection('recipes').updateOne(
       { _id: new ObjectId(req.params.id) },
@@ -272,7 +272,7 @@ app.get('/admin/users', async (req, res) => {
   });
   
   //Reset Passwords
-  app.put('/admin/users/:userId/reset-password', async (req, res) => {
+  app.patch('/admin/users/:userId/reset-password', async (req, res) => {
     try {
       const result = await db.collection('users').updateOne(
         { _id: new ObjectId(req.params.userId) },
