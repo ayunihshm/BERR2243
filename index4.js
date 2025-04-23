@@ -195,7 +195,7 @@ app.post('/recipes/:recipeId/comments', async (req, res) => {
     await db
       .collection('comments')
       .insertOne({ recipeId: req.params.recipeId, ...req.body });
-    res.status(201).json({ message: 'Comment added' });
+    res.status(201).json({ message: 'Comment added', id: result.insertedId });
   } catch (err) {
     res.status(400).json({ error: 'Invalid comment data' });
   }
