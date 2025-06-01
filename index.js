@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const { MongoClient, ObjectId } = require('mongodb');
 const port = 3200;
+console.log("JWT_SECRET:", process.env.JWT_SECRET);
+
 
 const app = express();
 app.use(express.json());
