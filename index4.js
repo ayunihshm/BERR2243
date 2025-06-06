@@ -36,6 +36,15 @@ app.post('/auth/register', async (req, res) => {
   }
 });
 
+app.post('/auth/register-chef', async (req, res) => {
+  try {
+    const result = await db.collection('chefs').insertOne(req.body);
+    res.status(201).json({ id: result.insertedId });
+  } catch (err) {
+    res.status(400).json({ error: 'Invalid chef registration' });
+  }
+});
+
 //login
 app.post('/auth/login', async (req, res) => {
   try {
@@ -97,13 +106,20 @@ app.patch('/users/:userId', async (req, res) => {
 // Recipes
 //post recipe
 app.post('/recipes', async (req, res) => {
-    try {
-        const result = await db.collection('recipes').insertOne({ ...req.body, status: 'pending' });
-        res.status(201).json({ id: result.insertedId });
-    } catch (err) {
-        res.status(400).json({ error: "Invalid recipe data" });
+  try {
+    if (!req.body.chefId) {
+      return res.status(400).json({ error: "chefId is required" });
     }
+    const chefObjectId = new ObjectId(req.body.chefId);
+    const recipeData = { ...req.body, chefId: chefObjectId, status: 'pending' };
+    const result = await db.collection('recipes').insertOne(recipeData);
+    res.status(201).json({ id: result.insertedId });
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ error: "Invalid recipe data" });
+  }
 });
+
 
 
 // update recipe
@@ -239,11 +255,10 @@ app.post('/recipes/:recipeId/comments/:commentId/reply', async (req, res) => {
 });
 
 // Ratings
+// Ratings
 app.post('/recipes/:recipeId/ratings', async (req, res) => {
   try {
-    await db
-      .collection('ratings')
-      .insertOne({ recipeId: req.params.recipeId, ...req.body });
+    await db.collection('ratings').insertOne({ recipeId: req.params.recipeId, ...req.body });
     res.status(201).json({ message: 'Rating submitted' });
   } catch (err) {
     res.status(400).json({ error: 'Invalid rating data' });
