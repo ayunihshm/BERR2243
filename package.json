@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "bcryptjs": "^3.0.2",
-    "mongodb": "^6.16.0"
-  }
-}
