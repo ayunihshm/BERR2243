@@ -3,9 +3,10 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+console.log("MONGODB_URI:", process.env.MONGODB_URI)
 const { authenticate, authorize } = require('./auth');
 const { MongoClient, ObjectId } = require('mongodb');
-const port = 3200;
+const port = 3300;
 
 const app = express();
 app.use(express.json());
@@ -437,15 +438,24 @@ app.patch('/admin/users/:userId/reset-password', async (req, res) => {
 // Admin - Delete User
 app.delete('/admin/users/:id', authenticate, authorize(['admin']), async (req, res) => {
   try {
+    // ✅ If user is not logged in, `authenticate` will return:
+    // res.status(401).json({ error: 'Unauthorized' });
+
+    // ✅ If user is not an admin, `authorize` will return:
+    // res.status(403).json({ error: 'Forbidden' });
+
     const result = await db.collection('users').deleteOne({ _id: new ObjectId(req.params.id) });
 
     if (result.deletedCount === 0) {
+      // ✅ If no user was found to delete
       return res.status(404).json({ error: 'User not found' });
     }
 
-    res.status(200).json({ message: 'User deleted successfully' });
+    // ✅ Deletion successful — return 204 No Content
+    res.status(204).send();
   } catch (err) {
     console.error('Error deleting user:', err);
+    // ✅ Server/database error
     res.status(500).json({ error: 'Failed to delete user' });
   }
 });
