@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "2124fff0-9450-4f1d-b22d-196457cf6dc9",
+		"name": "exercise 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44009810",
+		"_collection_link": "https://jannah-972715.postman.co/workspace/jannah's-Workspace~30a36b41-3322-4aa1-8951-f35ee1dbe17b/collection/44009810-2124fff0-9450-4f1d-b22d-196457cf6dc9?action=share&source=collection_link&creator=44009810"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/rides",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pickupLocation\": \"Central Park\",\r\n    \"destination\": \"Times Square\",\r\n    \"driverId\": \"DRIVER123\",\r\n    \"status\": \"requested\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rides",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rides"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/rides",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/rides",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rides"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/rides/67fb390b61b5adbb370b880e",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"cancelled\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rides/67fb390b61b5adbb370b880e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rides",
+						"67fb390b61b5adbb370b880e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/rides/67fb390c61b5adbb370b880f",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/rides/67fb390c61b5adbb370b880f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rides",
+						"67fb390c61b5adbb370b880f"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

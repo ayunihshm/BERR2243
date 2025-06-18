@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "6e89bfa3-caf5-4bb9-a78d-2520e9b6b111",
+		"name": "Recipe Sharing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43187254"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"John\",\r\n  \"email\": \"john123@gmail.com\",\r\n  \"password\": \"john109\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Chef",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Chef Kim Hyunwoo\",\r\n  \"email\": \"hyunwookim@gmail.com\",\r\n  \"password\": \"hotguy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/auth/register-chef",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"auth",
+						"register-chef"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"john123@gmail.com\",\r\n    \"password\": \"john109\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change password",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"684a7e3cfe72fb3c66e63647\",\r\n    \"oldPassword\": \"john109\",\r\n    \"newPassword\": \"john123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/auth/change-password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"auth",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3200/users/684a7e3cfe72fb3c66e63647",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"users",
+						"684a7e3cfe72fb3c66e63647"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update profile",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Cena\",\r\n    \"email\": \"john123@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/users/684a7e3cfe72fb3c66e63647",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"users",
+						"684a7e3cfe72fb3c66e63647"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post recipe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"chefId\": \"6843046bc634c9da81b60aea\",\r\n  \"title\": \"Creamy Garlic Mushroom Pasta\",\r\n  \"desc\": {\r\n    \"ingredients\": [\r\n      \"200g fettuccine or spaghetti\",\r\n      \"250g mushrooms, sliced\",\r\n      \"3 cloves garlic, minced\",\r\n      \"1 small onion, finely chopped\",\r\n      \"1 tbsp butter\",\r\n      \"1 tbsp olive oil\",\r\n      \"200ml heavy cream\",\r\n      \"50g grated Parmesan cheese\",\r\n      \"Salt and black pepper to taste\",\r\n      \"Fresh parsley for garnish\"\r\n    ],\r\n    \"steps\": [\r\n      \"Cook pasta according to package instructions. Drain and set aside.\",\r\n      \"In a pan, heat butter and olive oil over medium heat.\",\r\n      \"Sauté onion and garlic until fragrant.\",\r\n      \"Add mushrooms and cook until soft and lightly browned.\",\r\n      \"Pour in the cream and bring to a simmer.\",\r\n      \"Stir in Parmesan cheese, then season with salt and pepper.\",\r\n      \"Add cooked pasta and toss to coat evenly with sauce.\",\r\n      \"Garnish with chopped parsley and serve warm.\"\r\n    ]\r\n  },\r\n  \"status\": \"approved\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/recipes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search recipe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3200/recipes/search?q=beef",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"recipes",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "beef"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Recipe",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Grilled Vegetables Ratatouille\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/recipes/68430955c634c9da81b60b03",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"recipes",
+						"68430955c634c9da81b60b03"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View all approved recipes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3200/recipes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete recipe",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3200/recipes/684a8416fe72fb3c66e6364a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"recipes",
+						"684a8416fe72fb3c66e6364a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add recipe to favorites",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"recipeId\": \"6843081ec634c9da81b60af1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/users/684a7e3cfe72fb3c66e63647/favorites",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"users",
+						"684a7e3cfe72fb3c66e63647",
+						"favorites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View favorites",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3200/users/684a7e3cfe72fb3c66e63647/favorites",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"users",
+						"684a7e3cfe72fb3c66e63647",
+						"favorites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"684a7e3cfe72fb3c66e63647\",\r\n  \"text\": \"Tried this recipe and it was so good!\",\r\n  \"author\": \"John Cena\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/recipes/68430955c634c9da81b60b03/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"recipes",
+						"68430955c634c9da81b60b03",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete comment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3200/recipes/68430955c634c9da81b60b03/comments/684a871cfe72fb3c66e6364e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"recipes",
+						"68430955c634c9da81b60b03",
+						"comments",
+						"684a871cfe72fb3c66e6364e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reply comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"684a7e3cfe72fb3c66e63647\",\r\n    \"text\": \"Thanks for your feedback!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/recipes/68430955c634c9da81b60b03/comments/684a86e7fe72fb3c66e6364d/reply",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"recipes",
+						"68430955c634c9da81b60b03",
+						"comments",
+						"684a86e7fe72fb3c66e6364d",
+						"reply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add ratings",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"684a7e3cfe72fb3c66e63647\",\r\n    \"score\": 3.5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/recipes/68430955c634c9da81b60b03/ratings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"recipes",
+						"68430955c634c9da81b60b03",
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View recipe rating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3200/api/recipes/6843081ec634c9da81b60af1/ratings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"api",
+						"recipes",
+						"6843081ec634c9da81b60af1",
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Approve or reject recipe",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"approved\" // or \"rejected\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3200/admin/recipes/684a89d4fe72fb3c66e63651/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"admin",
+						"recipes",
+						"684a89d4fe72fb3c66e63651",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3200/admin/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Analytics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3200/analytics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"analytics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Analytics users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3200/analytics/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3200",
+					"path": [
+						"analytics",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
