@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "6d1a4a53-36ea-4d2c-8c17-6b007c2f78ea",
+		"name": "week 6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44009810",
+		"_collection_link": "https://jannah-972715.postman.co/workspace/jannah's-Workspace~30a36b41-3322-4aa1-8951-f35ee1dbe17b/collection/44009810-6d1a4a53-36ea-4d2c-8c17-6b007c2f78ea?action=share&source=collection_link&creator=44009810"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"syaf@example.com\",\r\n    \"password\": \"Password123\",\r\n    \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"syaf@example.com\",\r\n    \"password\": \"Password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODU0MjQ3OTIwNjYyNWMzMzczNzJjMTAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTAzNDQ4NDQsImV4cCI6MTc1MDM0ODQ0NH0.7UHN0OcQiQOy6AkNyJ_LVGd-mbHMspE6Hv0lCPSNufs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/admin/users/68542479206625c337372c10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"users",
+						"68542479206625c337372c10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

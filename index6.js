@@ -6,7 +6,7 @@ require('dotenv').config();
 console.log("MONGODB_URI:", process.env.MONGODB_URI)
 const { authenticate, authorize } = require('./auth');
 const { MongoClient, ObjectId } = require('mongodb');
-const port = 27017;
+const port = 3000;
 
 const app = express();
 app.use(express.json());
